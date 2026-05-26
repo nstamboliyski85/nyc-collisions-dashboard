@@ -14,10 +14,10 @@ Data Catalog: Data.gov NYC Collisions  - https://catalog.data.gov/dataset/motor-
 Direct Raw CSV Feed: City of New York API - https://data.cityofnewyork.us/api/views/h9gi-nx95/rows.csv?accessType=DOWNLOAD
 
 How to run it?
-# 1. Extract raw data and build the optimized Delta Lake partitions
+#Extract raw data and build the optimized Delta Lake partitions
 python load_data.py
 
-# 2. Launch the analytical web dashboard
+#Launch the analytical web dashboard
 python -m streamlit run present_data_visualization.py
 
 
