@@ -14,6 +14,7 @@ Data Catalog: Data.gov NYC Collisions  - https://catalog.data.gov/dataset/motor-
 Direct Raw CSV Feed: City of New York API - https://data.cityofnewyork.us/api/views/h9gi-nx95/rows.csv?accessType=DOWNLOAD
 
 How to run it?
+
 #Extract raw data and build the optimized Delta Lake partitions
 
 python load_data.py
