@@ -1,14 +1,23 @@
-# nyc-collisions-dashboard
+NYC Motor Vehicle Collisions Analytics
 
-Dashboard for visualizing data reports for NYC motor vehicle collisions
+Rather than reading massive raw CSV files directly into memory—which crashes dashboards at scale—this project utilizes a modern decoupling pattern:
 
-Dataset url: https://catalog.data.gov/dataset/motor-vehicle-collisions-crashes?from_hint=eyJzb3J0IjoicG9wdWxhcml0eSJ9
+Extraction & Feature Engineering (load_data.py): Cleans dirty records, filters out uninformative categorical data (e.g., "UNKNOWN"), and engineers dynamic time features (YEAR, MONTH, CRASH HOUR).
 
-CSV file - https://data.cityofnewyork.us/api/views/h9gi-nx95/rows.csv?accessType=DOWNLOAD
+Storage Layer (Delta Lake / Parquet): Persists data locally or on cloud storage using columnar Parquet files, structurally partitioned by [YEAR, BOROUGH] for ultra-fast disk-seek times.
 
-Initialize and run in bash:
+Presentation Layer (present_data_visualization.py): A lightweight, lightning-fast Streamlit dashboard powered by Plotly that reads directly from the optimized data layout without dragging down system resources.
 
+📊 Data Source & Schema
+Data Catalog: Data.gov NYC Collisions  - https://catalog.data.gov/dataset/motor-vehicle-collisions-crashes?from_hint=eyJzb3J0IjoicG9wdWxhcml0eSJ9
+
+Direct Raw CSV Feed: City of New York API - https://data.cityofnewyork.us/api/views/h9gi-nx95/rows.csv?accessType=DOWNLOAD
+
+How to run it?
+# 1. Extract raw data and build the optimized Delta Lake partitions
 python load_data.py
 
+# 2. Launch the analytical web dashboard
 python -m streamlit run present_data_visualization.py
+
 
