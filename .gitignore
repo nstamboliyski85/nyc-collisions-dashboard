@@ -1,0 +1,10 @@
+# Ignore local Delta Lake tables and raw data files
+deltalake/
+*.csv
+*.parquet
+
+# Ignore Python virtual environments and caches
+__pycache__/
+.venv/
+.env
+.streamlit/secrets.toml
