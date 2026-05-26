@@ -1,0 +1,26 @@
+ Option A:
+ 
+ -- [ S3 Bucket: Input source dataset ]
+
+ --- [ AWS Glue ETL / Lambda ] ── Drops junk rows, calculates YEAR/BOROUGH
+          
+ --- [ S3 Bucket: Deltalake (Parquet) ]
+          
+ --- [ Amazon Athena ] ── Virtual SQL query engine 
+          
+ --- [ Amazon QuickSight ] ── AWS BI tool 
+
+     -------------------------------------------------------------
+
+Option B:
+-- [ S3 Bucket: Input source dataset ]
+          
+ ---[ AWS Glue ETL / Lambda ]  ── Drops junk rows, calculates YEAR/BOROUGH
+          
+ ---[ S3 Bucket: Deltalake (Parquet) ]
+          
+        (Fast Arrow/Parquet read)
+
+ ---[ Amazon ECS / Fargate ] 
+          
+ ---Dockerized Streamlit App (Accessible via Cloud URL)

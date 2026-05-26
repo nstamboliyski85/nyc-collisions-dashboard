@@ -1,0 +1,48 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ReadRawData",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::nyc-collisions-raw-landing",
+                "arn:aws:s3:::nyc-collisions-raw-landing/*"
+            ]
+        },
+        {
+            "Sid": "WriteDeltaLake",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:DeleteObject",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::nyc-collisions-analytics-lake",
+                "arn:aws:s3:::nyc-collisions-analytics-lake/*"
+            ]
+        },
+        {
+            "Sid": "ManageGlueDataCatalogSchema",
+            "Effect": "Allow",
+            "Action": [
+                "glue:GetDatabase",
+                "glue:CreateDatabase",
+                "glue:GetTable",
+                "glue:CreateTable",
+                "glue:UpdateTable",
+                "glue:BatchCreatePartition"
+            ],
+            "Resource": [
+                "arn:aws:iam::*:catalog",
+                "arn:aws:glue:*:*:database/nyc_collisions_db",
+                "arn:aws:glue:*:*:table/nyc_collisions_db/*"
+            ]
+        }
+    ]
+}

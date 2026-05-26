@@ -1,0 +1,20 @@
+AWS IAM Roles specs for least privileges
+
+    [ Glue/Labda ETL Role ]
+        Read only from S3 raw data
+        Write-Only to S3 Clean 
+        No access to Dashboard
+     
+    [ Athena Service Role ]
+        Read-Only from S3 Clean
+        Write-Only to Athena Query Results Bucket (for example temp folder)
+    
+    [ Streamlit / ECS Role ]
+        Read-Only from S3 Clean
+        No access to Glue Code
+    
+
+
+
+
+

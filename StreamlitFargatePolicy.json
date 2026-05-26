@@ -1,0 +1,42 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ExecuteAthenaAnalyticalQueries",
+            "Effect": "Allow",
+            "Action": [
+                "athena:StartQueryExecution",
+                "athena:GetQueryExecution",
+                "athena:GetQueryResults",
+                "athena:StopQueryExecution"
+            ],
+            "Resource": "arn:aws:athena:*:*:workgroup/primary"
+        },
+        {
+            "Sid": "ReadAthenaQueryOutputs",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::aws-athena-query-results-nyc-collisions",
+                "arn:aws:s3:::aws-athena-query-results-nyc-collisions/*"
+            ]
+        },
+        {
+            "Sid": "ReadGlueMetadataForDataframes",
+            "Effect": "Allow",
+            "Action": [
+                "glue:GetDatabase",
+                "glue:GetTable",
+                "glue:GetPartitions"
+            ],
+            "Resource": [
+                "arn:aws:iam::*:catalog",
+                "arn:aws:glue:*:*:database/nyc_collisions_db",
+                "arn:aws:glue:*:*:table/nyc_collisions_db/*"
+            ]
+        }
+    ]
+}
