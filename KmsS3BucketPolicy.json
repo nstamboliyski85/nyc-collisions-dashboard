@@ -1,0 +1,15 @@
+{
+	"Statement": [
+		{
+			"Action": [
+				"kms:Decrypt",
+				"kms:GenerateDataKey",
+				"kms:DescribeKey"
+			],
+			"Resource": [
+				"arn:aws:kms:eu-west-3:334374624224:key/KMS_Encryption_Key"
+			],
+			"Effect": "Allow"
+		}
+	]
+}
