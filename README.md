@@ -15,9 +15,11 @@ Direct Raw CSV Feed: City of New York API - https://data.cityofnewyork.us/api/vi
 
 How to run it?
 #Extract raw data and build the optimized Delta Lake partitions
+
 python load_data.py
 
 #Launch the analytical web dashboard
+
 python -m streamlit run present_data_visualization.py
 
 
