@@ -6,3 +6,7 @@ Dataset url: https://catalog.data.gov/dataset/motor-vehicle-collisions-crashes?f
 
 CSV file - https://data.cityofnewyork.us/api/views/h9gi-nx95/rows.csv?accessType=DOWNLOAD
 
+Initialize and run in bash:
+python load_data.py
+python -m streamlit run present_data_visualization.py
+
